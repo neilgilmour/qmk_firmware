@@ -29,7 +29,7 @@ extern uint8_t is_master;
 #define _ADJUST 3
 #define _MOVEMENT 4
 
-#define KC_SFCPS TD(TD_SHFTCAP)
+#define KC_SFCPS LSFT_T(KC_CAPS)
 #define KC_CTTB LCTL_T(KC_TAB)
 #define KC_ENTMOV LT(_MOVEMENT, KC_ENT)
 
@@ -43,15 +43,7 @@ enum custom_keycodes {
   RGBRST
 };
 
-enum tap_dance_keycodes { TD_SHFTCAP = 0 };
 
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_SHFTCAP] = ACTION_TAP_DANCE_DOUBLE(KC_LSHIFT, KC_CAPS),
-};
-
-enum macro_keycodes {
-  KC_SAMPLEMACRO,
-};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT( \
@@ -104,11 +96,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MOVEMENT] = LAYOUT( \
   //,-----------------------------------------.                ,-----------------------------------------.
-     KC_ESC, KC_WH_L, KC_MS_U, KC_WH_R, KC_4,  KC_5,         KC_6,  KC_7,  KC_8,  KC_9,  KC_0,KC_BSPC,\
+     KC_ESC,KC_WH_L, KC_MS_U, KC_WH_R, KC_NO, KC_NO,            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,KC_BSPC,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-    KC_WH_U, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, KC_NO,           KC_LEFT,KC_DOWN,KC_UP, KC_RIGHT,KC_NO,KC_NO,\
+    KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_U, KC_NO,           KC_LEFT,KC_DOWN,KC_UP, KC_RIGHT,KC_NO,KC_NO,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-    KC_WH_D, KC_ACL0, KC_ACL1, KC_ACL2, KC_NO, KC_NO,           KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_ENT,\
+    KC_TRNS, KC_ACL0, KC_ACL1, KC_ACL2, KC_WH_D, KC_NO,           KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_ENT,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                             KC_LGUI, KC_BTN2, KC_BTN1,   KC_TRNS, RAISE,KC_RALT \
                               //`--------------------'  `--------------------'
